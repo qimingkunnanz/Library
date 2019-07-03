@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+    }
+
+    @media (max-width: 768px){
+      .left {
+        flex: 0 0 50px;
+      }
+      .right {
+        flex: 0 0 50px;
+      }
+    }
+
+    .left {
+      flex: 0 1 200px;
+      height: 100%;
+      background-color: aqua;
+    }
+    .middle {
+      flex: 1 1 auto;
+      height: 100%;
+      background-color: blanchedalmond;
+
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .right {
+      flex: 0 1 200px;
+      height: 100%;
+      background-color: blueviolet;
+    }
+    .middle ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    .middle span {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background-color: #e6c696;
+      margin: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="left"></div>
+    <div class="middle">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="right"></div>
+  </div>
+
+  <script>
+var arr = [11,21,31,41,51];
+for(var i=0; i<arr.length; i++){
+  console.log(arr[i])
+}
+// $.each()
+arr.forEach(function(item,index,arr){
+  console.log('foreach: ', item,index,arr);
+})
+var dom = document.querySelector('.wrap');
+dom.addEventListener('click', function(e){
+  console.log(this,e.target)
+})
+
+var arr= [5,4,3,2,1]
+function sort11(arr){
+  for(var i=0; i<arr.length; i++){
+    for(var j=0; j<arr.length; j++){
+      if(arr[j] > arr[j+1]){
+        var temp = arr[j];
+        arr[j]= arr[j+1];
+        arr[j+1] = temp;
+      }
+    }
+  }
+  return arr;
+}
+
+console.log(sort11([5,4,3,2,1]))
+console.log(sort11([0,1,21,4123,343,32,11]))
+
+function fn1(){
+  var num = 1;
+  function fn2(){
+    num++;
+    console.log(num)
+  }
+  fn2();
+}
+fn1();
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>常见的几种圣杯布局</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			color: #fff;
+		}
+		.layout:after {
+			clear: both;    /* 清除浮动, 还可以直接写overflow:hidden */
+			content: " ";
+			display: table;
+		}
+
+		.layout-1 {
+			padding-left: 210px;
+		}
+		.layout__aside-1 {
+			width: 200px;
+			float: left;
+			background-color: #CC9933;
+			margin-left: -210px;
+		}
+		.layout__main-1 {
+			width: 100%;
+			float: left;
+			background-color: #4DBCB0;
+		}
+
+		/* 布局二 */
+		.layout-2 {
+			padding-right: 210px;
+		}
+		.layout__aside-2 {
+			width: 200px;
+			float: right;
+			background-color: #CC9933;
+			margin-right: -210px;
+		}
+		.layout__main-2 {
+			width: 100%;
+			float: left;
+			background-color: #4DBCB0;
+		}
+
+		/* 布局三 */
+		.layout-3 {
+			padding: 0 210px;
+		}
+		.left-3 {
+			width: 200px;
+			float: left;
+			background-color: #CC9933;
+			margin-left: -210px;
+		}
+		.middle-3 {
+			width: 100%;
+			float: left;
+			background-color: #009966;
+		}
+		.right-3 {
+			width: 200px;
+			float: right;
+			margin-right: -210px;
+			background-color: #4DBCB0;
+		}
+
+		/* 布局四 */
+		.layout-4 {
+			padding-left: 420px;
+		}
+		.left-41 {
+			width: 200px;
+			float: left;
+			margin-left: -420px;
+			background-color: #CC9933;
+		}
+		.left-42 {
+			width: 200px;
+			float: left;
+			margin-left: -210px;
+			background-color: #009966;
+		}
+		.main-4 {
+			width: 100%;
+			float: left;
+			background-color: #4DBCB0;
+		}
+
+		/* 使用flex实现三栏布局 */
+		.layout-flex {
+			display: flex;
+			margin-bottom: 10px;
+		}
+		.layout__main-flex {
+			flex: 1;
+			margin-left: 10px;
+			background-color: #CC9933;
+		}
+		.layout__aside-flex {
+				width: 200px;
+				background-color: #4DBCB0;
+		}
+	</style>
+</head>
+<body>
+	<div class="layout layout-1">
+		<div class="layout__aside-1">侧边栏宽度固定</div>
+		<div class="layout__main-1">主内容栏宽度自适应</div>
+	</div>
+
+	<hr>
+	<div class="layout layout-2">
+		<div class="layout__main-2">主内容栏宽度自适应</div>
+		<div class="layout__aside-2">侧边栏宽度固定</div>
+	</div>
+
+	<hr>
+	<div class="layout layout-3">
+		<div class="left-3">左侧边栏宽度固定</div>
+		<div class="middle-3">主内容栏宽度自适应</div>
+		<div class="right-3">右侧边栏宽度固定</div>
+	</div>
+
+	<hr>
+	<div class="layout layout-4">
+		<div class="left-41">左一侧边栏宽度固定</div>
+		<div class="left-42">左二侧边栏宽度固定</div>
+		<div class="main-4">主内容栏宽度自适应</div>
+	</div>
+
+	<hr>
+	<h2 style="color: #000">使用flex实现三栏布局</h2>
+	<div class="layout-flex">
+		<aside class="layout__aside-flex">侧边栏宽度固定</aside>
+		<div class="layout__main-flex">主内容栏宽度自适应</div>
+	</div>
+	<div class="layout-flex">
+		<div class="layout__main-flex">主内容栏宽度自适应</div>
+		<aside class="layout__aside-flex">侧边栏宽度固定</aside>
+	</div>
+	<div class="layout-flex">
+		<aside class="layout__aside-flex">左侧边栏宽度固定</aside>
+		<div class="layout__main-flex">主内容栏宽度自适应</div>
+		<aside class="layout__aside-flex">右侧边栏宽度固定</aside>
+	</div>
+	<div class="layout-flex">
+		<aside class="layout__aside-flex">第1个侧边栏宽度固定</aside>
+		<aside class="layout__aside-flex">第2个侧边栏宽度固定</aside>
+		<div class="layout__main-flex">主内容栏宽度自适应</div>
+	</div>
+	<div class="layout-flex">
+		<div class="layout__main-flex">主内容栏宽度自适应</div>
+		<aside class="layout__aside-flex">第1个侧边栏宽度固定</aside>
+		<aside class="layout__aside-flex">第2个侧边栏宽度固定</aside>
+	</div>
+</body>
+</html>
