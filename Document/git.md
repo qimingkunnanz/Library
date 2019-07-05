@@ -1,5 +1,19 @@
 # git
 
+工作中先克隆下来,在将自己的代码拷贝到克隆的文件夹中,然后执行add commit 最后push上传文件
+
+```
+git clone https://gitee.com/errlei/testmayun.git
+git add --all
+git commit -m '添加了一个加密功能'
+git push https://gitee.com/errlei/testmayun.git master
+// 如果push失败，证明你和远程的版本不一致，先git pull拉取一下远程代码，手动解决了冲突之后再提交 git push
+git status
+git log --oneline
+```
+
+
+
 > 在自己创建的分支中操作修改完成功能之后在dev中合并自己的代码
 创建git
 ```
