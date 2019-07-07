@@ -583,3 +583,41 @@ module.exports = {
 }; // 当属性名和变量名相同时可以简写
 ```
 
+### 3) export命令
+
+模块功能主要由两个命令构成：`export`和`import`。`export`命令用于规定模块的对外接口，`import`命令用于输入其他模块提供的功能
+
+#### 对外暴露变量
+
+```js
+// 脚本尾部
+// profile.js
+var firstName = 'Michael';
+var lastName = 'Jackson';
+var year = 1958;
+
+export { firstName, lastName, year };
+```
+
+`export`命令除了输出变量，还可以输出函数或类（class）。
+
+```javascript
+export function multiply(x, y) {
+  return x * y;
+};
+```
+
+通常情况下，`export`输出的变量就是本来的名字，但是可以使用`as`关键字重命名。
+
+```javascript
+function v1() { ... }
+function v2() { ... }
+
+export {
+  v1 as streamV1,
+  v2 as streamV2,
+  v2 as streamLatestVersion
+};
+```
+
+上面代码使用`as`关键字，重命名了函数`v1`和`v2`的对外接口。重命名后，`v2`可以用不同的名字输出两次。
