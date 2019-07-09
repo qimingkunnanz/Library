@@ -589,6 +589,12 @@ module.exports = {
 
 #### 对外暴露变量
 
+> 使用 export default 和 export 向外暴露成员
+>
+> 在一个模块中，export default 只允许向外暴露1次
+>
+> 在一个模块中，可以同时使用 export default 和 export 向外暴露成员
+
 ```js
 // 脚本尾部
 // profile.js
