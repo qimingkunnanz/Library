@@ -583,17 +583,21 @@ module.exports = {
 }; // 当属性名和变量名相同时可以简写
 ```
 
-### 3) export命令
+### (模块命令)
 
 模块功能主要由两个命令构成：`export`和`import`。`export`命令用于规定模块的对外接口，`import`命令用于输入其他模块提供的功能
 
-#### 对外暴露变量
+#### export 导出
+
+##### 对外暴露成员
 
 > 使用 export default 和 export 向外暴露成员
 >
 > 在一个模块中，export default 只允许向外暴露1次
 >
 > 在一个模块中，可以同时使用 export default 和 export 向外暴露成员
+
+export 只能接收对象形式
 
 ```js
 // 脚本尾部
@@ -603,6 +607,7 @@ var lastName = 'Jackson';
 var year = 1958;
 
 export { firstName, lastName, year };
+import { firstName, lastName, year } from './profile.js'
 ```
 
 `export`命令除了输出变量，还可以输出函数或类（class）。
@@ -627,3 +632,23 @@ export {
 ```
 
 上面代码使用`as`关键字，重命名了函数`v1`和`v2`的对外接口。重命名后，`v2`可以用不同的名字输出两次。
+
+```js
+// 在Node中 使用 var 名称 = require('模块标识符')
+module.exports 和 exports 来暴露成员
+```
+
+#### import 导入
+
+```js
+import 模块名称 from '模块标识符'
+import '表示路径'
+```
+
+如果多次重复执行同一句`import`语句，那么只会执行一次，而不会执行多次。
+
+如果想为输入的变量重新取一个名字，`import`命令要使用`as`关键字，将输入的变量重命名。
+
+```javascript
+import { lastName as surname } from './profile.js';
+```
