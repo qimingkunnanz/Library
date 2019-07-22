@@ -157,14 +157,15 @@ jQuery中的this和e.atrget是一样的
 
 ### ==跨域==
 
-3. 解决方法:
-   1. 服务器
-      1. 引入cors()模块跨越
-      2. 原生方法:添加指定域名实现跨域,设置请求头
-   2. 浏览器 
-      1. 设置浏览器的禁用安全属性
-      2. jsonp可以跨越本值是get请求
-      3. 设置vue-cli请求代理,如从3001端口请求5001端口,涉及到跨越问题,在vue.config.js里设置proxy属性,将前端请求代理到请求目标服务器,实现(利用http-proxy模块)
+1. 服务器
+   1. 引入cors()模块跨越
+   2. 原生方法:添加指定域名实现跨域,设置请求头
+2. 浏览器 
+   1. 设置浏览器的禁用安全属性
+   2. jsonp可以跨越本值是get请求
+   3. 设置vue-cli请求代理,如从3001端口请求5001端口,涉及到跨越问题,在vue.config.js里设置proxy属性,将前端请求代理到请求目标服务器,实现(利用http-proxy模块)
+   4. 可以使用 禁用了安全协议的浏览器开发，也可以自己手动配置vue.config.js配置文件里面的proxy代理，来实现跨域
+
 2. jsonp跨越原理利用script脚本形式实现,只支持get方式,是前端技术
 3. cors跨域原理是通过服务器的技术 跨域名 是后台技术
 4. 开发的过程中，不需要后台设置，我们前台通过设置禁用浏览器的安全策略，也可以实现跨域的效果
@@ -189,7 +190,7 @@ a instanceof  b 判断a是否属于b
 
 ## 闭包
 
-在一个函数的内部调用外部函数的变量
+外部函数调用内部函数的变量
 
 内层函数的权限最高
 
@@ -469,6 +470,16 @@ commonjs module.exports
 
 dns  cdn  浏览器 服务器
 
+
+
+## 路由懒加载
+
+使用vue-cli 3.0搭建项目,默认就已经配置了路由懒加载,基于webpack内置的异步模块加载模块
+
+只有路由被访问时对应组件才会被加载,这样提高了页面的加载效率
+
+
+
 ## 拦截器(interceptors:通用单词)
 
 response:中间件
@@ -507,7 +518,9 @@ axios.interceptors.response.use(function (response) {
 });
 ```
 
+## 路由守卫
 
+控制路由的跳转和token一起使用可以控制用户登陆，强行让用户登陆不登陆不能进入用户页面
 
 ## 网络知识
 
@@ -579,10 +592,6 @@ src
 
 
 
-------
-
-nrm  换源
-
 ## webpack配置文件
 
 vue.config.js  :  服务器配置文件
@@ -625,6 +634,48 @@ package文件
 ## 使用第三方插件
 
 在npm 中查找  https://www.npmjs.com/
+
+
+
+### echarts图表
+
+> 业务需求要使用图表，百度谷歌搜索vue 图表插件，下载星星较多的库，我们这里选择百度的echarts  canvas webGL
+
+1. 使用方式， 查看文档 `https://github.com/ecomfe/vue-echarts/blob/HEAD/README.zh_CN.md`
+
+2. `cnpm install echarts vue-echarts`
+
+3. 百度echarts按需引入的文件是 `https://github.com/apache/incubator-echarts/blob/master/index.js` 一共就这几个模块，一定不要全部引入，很大
+
+4. 也可以不引入vue-echarts，但这个需要看官方网文档的解释说明
+
+   ```
+   // 引入基本模板
+   let echarts = require('echarts/lib/echarts')
+   // 引入柱状图组件
+   require('echarts/lib/chart/bar')
+   
+   // 2. 然后再初始化方法里面，初始化图表
+   let myChart = echarts.init(document.getElementById('myChart'))
+   
+   调用myChart.setOption({//修改数据})
+   ```
+
+### token
+
+是一种身份,令牌 一般用于登陆验证,浏览器向服务器请求验证验证成功后服务器携带token返回,也可以在每次请求时携带token证明自己的身份
+
+token在服务端生成token的值会存储到服务器,只有服务器和浏览器知道这个字符串,可以避免恶意攻击
+
+
+
+### TCP(打电话)三次握手(udp发短信)， http协议
+
+第一次握手：客户端发送x到服务器
+
+第二次握手：服务器收到x，进行处理然后发送x+1和y到浏览器
+
+第三次握手：浏览器收到x+1和y 在向服务器发送x+1和y+1
 
 
 
@@ -707,4 +758,7 @@ package文件
 
 实例属性 : 只能通过类的实例访问的属性
 
-### typles
+
+
+
+
